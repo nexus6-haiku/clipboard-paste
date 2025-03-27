@@ -1,0 +1,6 @@
+#!/bin/sh
+/bin/clipboard --save=/var/shared_memory/tmp_clipboard
+/bin/clipboard --copy=@
+/Dati/workspace/AutoPaste/autopaste
+/bin/clipboard --load=/var/shared_memory/tmp_clipboard
+rm -f /var/shared_memory/tmp_clipboard
