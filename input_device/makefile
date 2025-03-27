@@ -7,7 +7,7 @@
 ## Application Specific Settings ---------------------------------------------
 
 # specify the name of the binary
-NAME= AutoPasteInputDevice
+NAME= ClipboardPasteInputDevice
 TARGET_DIR = .
 
 # specify the type of binary
