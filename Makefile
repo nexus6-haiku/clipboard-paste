@@ -118,19 +118,21 @@ LINKER_FLAGS =
 #	appear at /dev/video/usb when loaded. The default is "misc".
 DRIVER_PATH =
 
-# Create a custom rule for the subproject
-# inputdevice:
-	# $(MAKE) install -C input_device
+# Add this near the top with other variable definitions
+INSTALL_DIR = /boot/system/non-packaged/bin
 
-# Define the default rule to build both the main project and subproject
-# $(TARGET):: inputdevice
+# Handle the input device subproject
+inputdevice:
+	$(MAKE) -C input_device
 
-# Hook into the clean target
-# clean: inputdevice-clean
+inputdevice-install:
+	$(MAKE) install -C input_device
 
-# Create a custom clean rule for the subproject
-# inputdevice-clean:
-	# $(MAKE) clean -C input_device
+$(TARGET):: inputdevice
+	$(MAKE) install -C input_device
+
+# Install both components
+install:: inputdevice-install
 
 ## Include the Makefile-Engine
 DEVEL_DIRECTORY := \
